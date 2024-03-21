@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PlayCylinder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Submit games to the website and play them anywhere!">
+    <link rel="icon" href="favico.png" type="image/x-icon">
+    <style>
+        body, td {
+            font-family: verdana, arial;
+            color: #000000;
+            font-size: 1.00em;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            text-align: center;
+            background-color: #FFFFFF;
+        }
+    </style>
+    <link rel="stylesheet" href="basicCSS.css">
+</head>
+<body>
+    <center>
+        <nav>
+            <div class="topnav">
+                <a>PlayCylinder</a>
+            </div>
+        </nav>
+    </center>
+    <div style="text-align: center;">
+        <div style="box-sizing: border-box; display: inline-block; width: auto; max-width: 600px; background-color: #FFFFFF; border: 0px solid #ABD085; border-radius: 1px; box-shadow: 0px 0px 8px #acd6ce; margin: 50px auto auto;" id="ap_form_box">
+            <div style="background: #acd6ce; border-radius: 1px 1px 0px 0px; padding: 15px 25px; position: relative">
+                <span style="font-family: verdana,arial; color: #FFFFFF; font-size: 1.00em; font-weight:bold; text-transform: none" id="ap_form_head">PlaySphere SignUp</span>
+            </div>
+            <div style="background: #FFFFFF; padding: 15px" id="ap_style">
+                <div style='display:none' id='ap_form_err' style=''><span id='ap_form_errmes' class='error'></span></div>
+                <div style='display:none' id='ap_form_inf'><span id='ap_form_infmes'></span></div>
+                <div class='ap_form_inp'>
+                    <form method="post" action="https://www.authpro.com/auth/RobertCantCode/" name="aform">
+                        <input type="hidden" name="action" value="reg2">
+                        <center>
+                            <table>
+                                <tr>
+                                    <td>Username:</td>
+                                    <td><input type="text" name="_login"></td>
+                                </tr>
+                                <tr>
+                                    <td>Email:</td>
+                                    <td><input type="email" name="_email"></td>
+                                </tr>
+                                <tr>
+                                    <td>Password:</td>
+                                    <td><input type="password" name="_password"></td>
+                                </tr>
+                                <tr>
+                                    <td>Verify password:</td>
+                                    <td><input type="password" name="_password2"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><input type="submit" id="ap_form_btn"></td>
+                                </tr>
+                            </table>
+                        </center>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+</body>
+</html>

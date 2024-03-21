@@ -1,0 +1,57 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.topnav {
+    background-color: #acd6ce;
+    overflow: hidden;
+}
+
+.topnav a {
+    float: center;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 19px;
+    font-family: arial;
+}
+
+.topnav a:hover {
+    background-color: #678f87;
+    cursor: pointer;
+}
+
+.header h1 {
+    font-size: 40px;
+    font-family: arial;
+}
+
+.button {
+    border: 1px solid #000;
+    padding: 2px 20px;
+    background-color: #acd6ce;
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 1px;
+    margin-bottom: 10px; /* Add margin between buttons */
+}
+
+.button:hover {
+    border: 1px solid #000;
+    padding: 2px 20px;
+    background-color: #678f87;
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 1px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2px;
+}

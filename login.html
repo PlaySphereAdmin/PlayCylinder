@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PlayCylinder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Submit games to the website and play them anywhere!">
+    <link rel="icon" href="favico.png" type="image/x-icon">
+    <style>
+        body, td {
+            font-family: verdana, arial;
+            color: #000000;
+            font-size: 1.00em;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            text-align: center;
+            background-color: #FFFFFF;
+        }
+    </style>
+    <link rel="stylesheet" href="basicCSS.css">
+</head>
+<body>
+    <center>
+        <nav>
+            <div class="topnav">
+                <a>PlayCylinder</a>
+            </div>
+        </nav>
+    </center>
+    <div style="text-align: center;">
+        <div style="box-sizing: border-box; display: inline-block; width: auto; max-width: 600px; background-color: #FFFFFF; border: 0px solid #ABD085; border-radius: 5px; box-shadow: 0px 0px 8px #acd6ce; margin: 50px auto auto;" id="ap_form_box">
+            <div style="background: #acd6ce; border-radius: 1px 1px 0px 0px; padding: 15px 25px; position: relative">
+                <span style="font-family: verdana,arial; color: #FFFFFF; font-size: 1.00em; font-weight:bold; text-transform: none" id="ap_form_head">PlaySphere Login</span>
+            </div>
+            <div style="background: #FFFFFF; padding: 15px" id="ap_style">
+                <form method="post" action="https://www.authpro.com/auth/RobertCantCode/" name="aform">
+                    <input type="hidden" name="action" value="login">
+                    <input type="hidden" name="user" value="RobertCantCode">
+                    <input type="hidden" name="hide" value="">
+                    <table id='ap_table_login' class='center'>
+                        <tr style='display:none' id='ap_form_err'>
+                            <td colspan='2' id='ap_form_errmes' class='error'>You have entered incorrect login or password.<br> Please try again.<br><br></td>
+                        </tr>
+                        <tr style='display:none' id='ap_form_inf'>
+                            <td colspan='2' id='ap_form_infmes'></td>
+                        </tr>
+                        <tr class='ap_form_inp'>
+                            <td>Username:</td>
+                            <td><input type="text" name="login" value="" autocorrect="off" autocapitalize="off" autocomplete="username"></td>
+                        </tr>
+                        <tr class='ap_form_inp'>
+                            <td>Password:</td>
+                            <td><input type="password" name="password" autocomplete="current-password"></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td align='left'><input type='checkbox' name='remember' value='1'> Remember me</td>
+                        </tr>
+                        <tr id='ap_form_isb'>
+                            <td>&nbsp;</td>
+                            <td><input type="submit" id='ap_form_btn' value="Login"></td>
+                        </tr>
+                        <tr>
+                            <td colspan=2>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan='2' id='ap_form_lostmes'><a href="https://www.authpro.com/auth/RobertCantCode/?action=lost">Forgot your username or password?</a></td>
+                        </tr>
+                        <tr>
+                            <td colspan='2' id='ap_form_regmes'>Don't got an account? Click <a href="signup.html">here</a> to register.</td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+    </footer>
+</body>
+</html>
