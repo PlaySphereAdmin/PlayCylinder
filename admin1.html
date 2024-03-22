@@ -63,23 +63,6 @@
                 }
             }
 
-            // Function to ban a user
-            async function banUser(username) {
-                try {
-                    const response = await fetch("https://playsphereadmin.github.io/PlayCylinder/api/ban", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({ username })
-                    });
-                    const data = await response.json();
-                    console.log(data.message);
-                } catch (error) {
-                    console.error("Failed to ban user:", error);
-                }
-            }
-
             // Call fetchUserList initially
             fetchUserList();
         </script>
