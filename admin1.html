@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PlayCylinder - Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Admin Panel">
+    <title>PlayCylinder - Admin</title>
     <link rel="stylesheet" href="adminCSS.css">
     <link rel="icon" href="favico.png" type="image/x-icon">
 </head>
@@ -18,59 +17,48 @@
         <div class="header">
             <h1>Admin Panel</h1>
         </div>
-        <ul style="font-family: Arial;" id="userList"></ul>
+        <ul id="userList" class="user-list"></ul>
         <footer>
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script>
             // Function to fetch and display user list
             window.onload = function() {
-                refreshUserList(); // Initial user list display
-            };
+                // Make an AJAX request to fetch user list from the server
+                axios.get('https://playsphereadmin.github.io/PlayCylinder/api/users')
+                .then(function (response) {
+                    var userList = document.getElementById("userList");
+                    response.data.forEach(function(user) {
+                        var listItem = document.createElement("li");
+                        listItem.textContent = user.username;
+                        
+                        // Add ban button
+                        var banButton = document.createElement("button");
+                        banButton.textContent = "Ban";
+                        banButton.style.backgroundColor = "red";
+                        banButton.style.border = "1px solid red"; // Red border
+                        banButton.onclick = function() {
+                            banUser(user.username);
+                            refreshUserList();
+                        };
+                        listItem.appendChild(banButton);
+
+                        userList.appendChild(listItem);
+                    });
+                })
+                .catch(function (error) {
+                    console.error("Error fetching user list:", error);
+                });
+            }
 
             // Function to ban a user
             function banUser(username) {
-                var storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-                var bannedUsers = JSON.parse(localStorage.getItem("bannedUsers")) || [];
-                var userIndex = storedUsers.findIndex(function(user) {
-                    return user.username === username;
-                });
-                if (userIndex !== -1) {
-                    bannedUsers.push(storedUsers[userIndex]);
-                    storedUsers.splice(userIndex, 1);
-                    localStorage.setItem("users", JSON.stringify(storedUsers));
-                    localStorage.setItem("bannedUsers", JSON.stringify(bannedUsers));
-                }
+                // Implement ban logic here
             }
 
             // Function to refresh the user list
             function refreshUserList() {
-                var userList = document.getElementById("userList");
-                userList.innerHTML = ""; // Clear the existing list
-                var storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-                storedUsers.forEach(function(user) {
-                    var listItem = document.createElement("li");
-
-                    // Username text
-                    var usernameText = document.createElement("span");
-                    usernameText.textContent = user.username;
-                    listItem.appendChild(usernameText);
-
-                    // Add spacing
-                    listItem.appendChild(document.createTextNode(" "));
-
-                    // Add ban button
-                    var banButton = document.createElement("button");
-                    banButton.textContent = "Ban";
-                    banButton.style.backgroundColor = "red";
-                    banButton.style.border = "1px solid red"; // Red border
-                    banButton.onclick = function() {
-                        banUser(user.username);
-                        refreshUserList();
-                    };
-                    listItem.appendChild(banButton);
-
-                    userList.appendChild(listItem);
-                });
+                // Implement user list refresh logic here
             }
         </script>
     </center>
