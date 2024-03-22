@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PlayCylinder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to PlayCylinder">
+    <link rel="stylesheet" href="basicCSS.css">
+    <link rel="icon" href="favico.png" type="image/x-icon">
+    <style>
+        .welcome-message {
+            font-family: Arial, sans-serif;
+        }
+
+        #loginButton {
+            display: none; /* Initially hide the login button */
+            background-color: #acd6ce;
+            padding: 1px 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <nav>
+            <div class="topnav">
+                <a href="project.html">Projects</a>
+                <a href="home.html">PlayCylinder</a>
+                <a href="editor.html">Editor</a>
+            </div>
+        </nav>
+        <div class="header">
+            <h1>PlayCylinder</h1>
+            <button id="loginButton" onclick="location.href='login.html';">Log In</button>
+        </div>
+        <div class="welcome-message" id="welcomeMessage"></div>
+        <footer>
+      <p style="font-family: arial;">Created Mar, 22</p>
+      <a href="https://www.youtube.com/channel/UCjt8Z_CIuu71HpYbnE3GzPw"><input type="image" src="tube.png"></a>
+        </footer>
+    </center>
+
+    <script>
+        // Function to get query parameters from URL
+        function getQueryParams(url) {
+            var queryParams = {};
+            var queryString = url.split('?')[1];
+            if (queryString) {
+                var pairs = queryString.split('&');
+                for (var i = 0; i < pairs.length; i++) {
+                    var pair = pairs[i].split('=');
+                    queryParams[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+                }
+            }
+            return queryParams;
+        }
+
+        // Function to display welcome message and login button
+        function displayWelcomeMessage(username) {
+            var welcomeMessage = document.getElementById("welcomeMessage");
+            var loginButton = document.getElementById("loginButton");
+            if (username) {
+                welcomeMessage.innerHTML = "Welcome <strong>" + username + "</strong>";
+                loginButton.style.display = "none"; // Hide the login button for logged-in users
+            } else {
+                welcomeMessage.innerHTML = "Welcome Visitor";
+                loginButton.style.display = "block"; // Show the login button for visitors
+            }
+        }
+
+        // On page load, display the welcome message
+        window.onload = function() {
+            var queryParams = getQueryParams(window.location.href);
+            var storedUsername = sessionStorage.getItem("username");
+            if (queryParams.username) {
+                displayWelcomeMessage(queryParams.username);
+                sessionStorage.setItem("username", queryParams.username);
+            } else if (storedUsername) {
+                displayWelcomeMessage(storedUsername);
+            } else {
+                displayWelcomeMessage();
+            }
+        };
+    </script>
+</body>
+</html>

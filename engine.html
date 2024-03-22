@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cylinder Engine</title>
+
+</head>
+<body>
+ <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #4f4f4f;
+            text-align: center;
+        }
+        #editor {
+            width: 50%;
+            height: 400px;
+            background-color: #b6b6b6;
+            color: black; /* Corrected attribute name */
+            margin-top: 20px; /* Added margin */
+        }
+        #runButton {
+            margin-top: 10px;
+            padding: 2px 20px; /* Increased padding */
+            background-color: #007bff;
+            border-radius: 1px;
+            cursor: pointer;
+            color: white; /* Added text color */
+        }
+        
+        .topnav {
+           background-color: #777777;
+        }
+
+        body, html {
+          margin: 0;
+          padding: 0;
+        }
+
+        #downloadButton {
+            margin-top: 10px;
+            padding: 2px 20px; /* Increased padding */
+            background-color: #007bff;
+            border-radius: 1px;
+            cursor: pointer;
+            color: white;
+         }
+ </style>
+    <nav>
+        <div class="topnav">
+            <a>Cylinder Engine</a>
+            <input type="text" id="projectName" placeholder="Enter project name"><br>
+        </div>
+    </nav>
+    <textarea id="editor" placeholder="Write your JavaScript code here..."></textarea><br>
+    <button id="runButton">Run Game</button>
+    <button id="downloadButton">Download Project</button>
+    <script>
+        document.getElementById("runButton").addEventListener("click", function() {
+            // Get the code from the editor
+            var code = document.getElementById("editor").value;
+            var projectName = document.getElementById("projectName").value;
+
+            // Create a new pop-up window
+            var gameWindow = window.open("", "GameWindow", "width=400,height=400");
+
+            // Write the code into the pop-up window
+            gameWindow.document.open();
+            gameWindow.document.write("<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>" + projectName + "</title><style>body, html { margin: 0; padding: 0; text-align: center; opacity: 0.5; } button { margin-top: 10px; padding: 1px 20px; background-color: #c2c897; border-radius: 1px; cursor: pointer; color: black; } </style></head><body><nav><button onclick='window.close()'>Leave</button></nav><canvas id='gameCanvas'></canvas><script>" + code + "</" + "script></body></html>");
+            gameWindow.document.close();
+        });
+
+        document.getElementById("downloadButton").addEventListener("click", function() {
+            // Get the code from the editor
+            var code = document.getElementById("editor").value;
+            var projectName = document.getElementById("projectName").value;
+
+            // Create the HTML content
+            var htmlContent = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>" + projectName + "</title><style>body, html { margin: 0; padding: 0; text-align: center; opacity: 0.5; } button { margin-top: 10px; padding: 1px 20px; background-color: #c2c897; border-radius: 1px; cursor: pointer; color: black; } </style></head><body><nav><button onclick='window.close()'>Leave</button></nav><canvas id='gameCanvas'></canvas><script>" + code + "</" + "script></body></html>";
+
+            // Combine HTML and JavaScript content
+            var fullContent = "data:text/html," + encodeURIComponent(htmlContent);
+
+            // Create a link element to download the file
+            var link = document.createElement("a");
+            link.download = projectName + ".html";
+            link.href = fullContent;
+
+            // Append the link to the document and trigger the download
+            document.body.appendChild(link);
+            link.click();
+
+            // Clean up
+            document.body.removeChild(link);
+        });
+    </script>
+</body>
+</html>

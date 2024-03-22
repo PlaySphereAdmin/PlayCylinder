@@ -1,0 +1,58 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.topnav {
+    background-color: #acd6ce;
+    overflow: hidden;
+}
+
+.topnav a {
+    float: center;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 19px;
+    font-family: arial;
+}
+
+.topnav a:hover {
+    background-color: #678f87;
+    cursor: pointer;
+}
+
+.header h1 {
+    font-size: 40px;
+    font-family: arial;
+}
+
+.container {
+    max-width: 300px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+input, textarea, button{
+    margin: 5px;
+    font-family: Arial, sans-serif; /* Change font to Arial */
+    border-radius: 1px;
+}
+
+.error-message {
+    color: red;
+}
+
+.signup-form label {
+    font-family: arial;
+}
+
+.login-form label {
+    font-family: arial;
+}
+
+#logbutton {
+    background-color: #acd6ce;
+    padding: 1px 26px;
+}

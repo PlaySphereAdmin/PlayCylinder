@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PlayCylinder - Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login to PlayCylinder">
+    <link rel="stylesheet" href="basicCSS.css">
+    <link rel="icon" href="favico.png" type="image/x-icon">
+</head>
+<body>
+    <center>
+        <nav>
+            <div class="topnav">
+                <a href="home.html">PlayCylinder</a>
+            </div>
+        </nav>
+        <div class="header">
+            <h1>PlayCylinder</h1>
+        </div>
+        <div class="login-form">
+            <form id="loginForm">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required><br><br>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required><br><br>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+        <footer>
+        </footer>
+    </center>
+
+    <script>
+        // Function to handle login
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+            var loggedInUser = storedUsers.find(function(user) {
+                return user.username === username && user.password === password;
+            });
+            if (loggedInUser) {
+                if (loggedInUser.banned) {
+                    alert("Sorry, this account is banned!");
+                } else if (username === "RobertCantCode") {
+                    window.location.href = "admin1.html";
+                } else {
+                    alert("Login successful!");
+                    sessionStorage.setItem("username", loggedInUser.username);
+                    redirectToHome();
+                }
+            } else {
+                alert("Invalid username or password.");
+            }
+            return false; // Prevent form submission
+        }
+
+        // Function to redirect to home.html
+        function redirectToHome() {
+            window.location.href = "home.html";
+        }
+
+        // Event listener for form submission
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+            login();
+        });
+    </script>
+</body>
+</html>

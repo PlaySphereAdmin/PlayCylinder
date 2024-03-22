@@ -1,0 +1,33 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.topnav {
+    background-color: #255288;
+    overflow: hidden;
+}
+
+.topnav a {
+    float: center;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 19px;
+    font-family: arial;
+}
+
+.topnav a:hover {
+    background-color: #193456;
+    cursor: pointer;
+}
+
+.header h1 {
+    font-size: 40px;
+    font-family: arial;
+}
+
+#ban {
+   background-color: red;
+}
