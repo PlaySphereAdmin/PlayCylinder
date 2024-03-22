@@ -26,7 +26,6 @@
                 <input type="password" id="password" name="password" required><br><br>
                 <input type="submit" value="Login">
             </form>
-            <p style="font-family: arial;">No account? <a href="signup.html">Sign up here!</a></p>
         </div>
         <footer>
         </footer>
@@ -42,15 +41,9 @@
                 return user.username === username && user.password === password;
             });
             if (loggedInUser) {
-                if (loggedInUser.banned) {
-                    alert("Sorry, this account is banned!");
-                } else if (username === "RobertCantCode") {
-                    window.location.href = "admin1.html";
-                } else {
-                    alert("Login successful!");
-                    sessionStorage.setItem("username", loggedInUser.username);
-                    redirectToHome();
-                }
+                alert("Login successful!");
+                sessionStorage.setItem("username", loggedInUser.username);
+                redirectToHome();
             } else {
                 alert("Invalid username or password.");
             }
