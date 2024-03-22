@@ -22,59 +22,22 @@
         <footer>
         </footer>
         <script>
-            // Function to fetch and display user list
-            window.onload = function() {
-                var storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-                var userList = document.getElementById("userList");
-
-                // Display each user's username
-                storedUsers.forEach(function(user) {
-                    var listItem = document.createElement("li");
-
-                    // Username text
-                    var usernameText = document.createElement("span");
-                    usernameText.textContent = user.username;
-                    listItem.appendChild(usernameText);
-
-                    // Add spacing
-                    listItem.appendChild(document.createTextNode(" "));
-
-                    // Add ban button
-                    var banButton = document.createElement("button");
-                    banButton.textContent = "Ban";
-                    banButton.style.backgroundColor = "red";
-                    banButton.style.border = "1px solid red"; // Red border
-                    banButton.onclick = function() {
-                        banUser(user.username);
-                        refreshUserList();
-                    };
-                    listItem.appendChild(banButton);
-
-                    userList.appendChild(listItem);
-                });
-            };
-
-            // Function to ban a user
-            function banUser(username) {
-                var storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-                var bannedUsers = JSON.parse(localStorage.getItem("bannedUsers")) || [];
-                var userIndex = storedUsers.findIndex(function(user) {
-                    return user.username === username;
-                });
-                if (userIndex !== -1) {
-                    bannedUsers.push(storedUsers[userIndex]);
-                    storedUsers.splice(userIndex, 1);
-                    localStorage.setItem("users", JSON.stringify(storedUsers));
-                    localStorage.setItem("bannedUsers", JSON.stringify(bannedUsers));
-                }
+            // Function to fetch user data from the server
+            function fetchUserData() {
+                fetch('https://your-api-endpoint.com/users')
+                .then(response => response.json())
+                .then(data => {
+                    populateUserList(data); // Populate user list with fetched data
+                })
+                .catch(error => console.error('Error fetching user data:', error));
             }
 
-            // Function to refresh the user list
-            function refreshUserList() {
+            // Function to populate the user list with fetched data
+            function populateUserList(users) {
                 var userList = document.getElementById("userList");
                 userList.innerHTML = ""; // Clear the existing list
-                var storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-                storedUsers.forEach(function(user) {
+                
+                users.forEach(function(user) {
                     var listItem = document.createElement("li");
 
                     // Username text
@@ -91,14 +54,31 @@
                     banButton.style.backgroundColor = "red";
                     banButton.style.border = "1px solid red"; // Red border
                     banButton.onclick = function() {
-                        banUser(user.username);
-                        refreshUserList();
+                        banUser(user.id); // Assuming user object has an ID
                     };
                     listItem.appendChild(banButton);
 
                     userList.appendChild(listItem);
                 });
             }
+
+            // Function to ban a user
+            function banUser(userId) {
+                fetch(`https://your-api-endpoint.com/users/${userId}/ban`, {
+                    method: 'POST'
+                })
+                .then(response => {
+                    if (response.ok) {
+                        fetchUserData(); // Refresh user list after banning
+                    } else {
+                        console.error('Failed to ban user');
+                    }
+                })
+                .catch(error => console.error('Error banning user:', error));
+            }
+
+            // Call fetchUserData when the page loads to populate the user list
+            window.onload = fetchUserData;
         </script>
     </center>
 </body>
